@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "holodule filter",
+    "version": "1.0.0",
+    
+    "action": {
+        "default_popup": "popup/popup.html"
+    },
+    "description": "ホロジュールをグループ毎にフィルターできる拡張機能",
+    
+    "background": {
+        "service_worker": "service_worker.js"
+    },
+    "content_scripts": [{
+        "matches": ["https://schedule.hololive.tv/*"],
+        "js": ["content_script.js"]
+    }],
+    "host_permissions": [
+        "https://schedule.hololive.tv/*"
+    ],
+    "permissions": [
+        "storage"
+    ]
+}

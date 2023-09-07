@@ -1,0 +1,19 @@
+body {
+    width: 400px;
+}
+
+h1 {
+    font-size: 14px;
+}
+
+.group {
+    border: 1px solid lightgray;
+}
+
+.subgroup {
+    padding-left: 1em;
+}
+
+label:has(input[type="checkbox"]) {
+    display: block;
+}
