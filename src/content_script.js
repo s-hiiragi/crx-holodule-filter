@@ -117,6 +117,7 @@ const groupNames = {
 
     'holostars_jp': [],
     'holostars_jp_official': [
+        'ホロスターズ',
     ],
     'holostars_jp_gen1': [
         '花咲みやび',
