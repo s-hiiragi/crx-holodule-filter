@@ -2,4 +2,6 @@
 
 ホロジュールをグループ毎にフィルターできるGoogle Chrome拡張機能です。
 
-![ポップアップ画面イメージ](doc/screenshot_popup.png)
+<p align="center">
+  <img src="doc/screenshot_popup.png" alt="ポップアップ画面イメージ" />
+</p>
