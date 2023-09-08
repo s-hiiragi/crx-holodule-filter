@@ -28,7 +28,7 @@
 
 - ツールバーのパズルピースアイコンを押し`holodule filter`を選択する
 - 表示したいグループにチェックを入れる
-- [ホロジュール](https://schedule.hololive.tv/lives)を開く
+- [ホロジュール](https://schedule.hololive.tv/lives)を開くorリロードする
 
 ## ライセンス
 
