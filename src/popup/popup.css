@@ -1,5 +1,5 @@
 body {
-    width: 400px;
+    width: 500px;
 }
 
 h1 {
@@ -8,12 +8,21 @@ h1 {
 
 .group {
     border: 1px solid lightgray;
+    margin-bottom: 1em;
 }
 
 .subgroup {
+    border-top: 1px solid lightgray;
+}
+
+.subgroup, .talent {
     padding-left: 1em;
 }
 
 label:has(input[type="checkbox"]) {
+    display: inline-block;
+}
+
+label:has(input[type="checkbox"][data-group]) {
     display: block;
 }
