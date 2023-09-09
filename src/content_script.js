@@ -117,23 +117,31 @@ const groupNames = {
     'holostars_en_tempus_shinri': ['Shinri'],
 };
 
-(async () => {
+async function apply_filter() {
     const filter = await chrome.runtime.sendMessage({'command': 'query_filter'});
-    console.log('response', filter);
+    console.debug('response', filter);
 
-    const unknownNames = Object.keys(filter).filter(name => !(name in groupNames));
-    if (unknownNames) {
-        console.debug('unknownNames', unknownNames);
+    const unknownFilters = Object.keys(filter).filter(name => !(name in groupNames));
+    if (unknownFilters) {
+        console.debug('unknownFilters', unknownFilters);
     }
 
-    const names = Object.keys(filter).
+    const hiddenNames = Object.keys(filter).
         filter(name => !filter[name]).
         flatMap(name => groupNames[name] ?? []);
 
-    const ls = Array.from(document.querySelectorAll('#all > .container > .row > div > .row > div > .thumbnail')).filter(e => {
-        const name = e.querySelector('.name').textContent.trim();
-        return names.includes(name);
-    });
+    console.debug('hiddenNames', hiddenNames);
 
-    ls.forEach(e => { e.parentNode.style.display = 'none'; });
-})();
+    const streams = Array.from(document.querySelectorAll('#all > .container > .row > div > .row > div > .thumbnail'));
+
+    streams.forEach(e => {
+        const name = e.querySelector('.name').textContent.trim();
+        e.parentNode.style.display = hiddenNames.includes(name) ? 'none' : '';
+    });
+}
+
+window.addEventListener('focus', (event) => {
+    apply_filter();
+});
+
+apply_filter();
