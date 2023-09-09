@@ -8,8 +8,8 @@ const groupNames = {
     'hololive_jp_gen0': [
         'ときのそら',
         'ロボ子さん',
-        'さくらみこ',
         'AZKi',
+        'さくらみこ',
         '星街すいせい',
     ],
     'hololive_jp_gen1': [
@@ -136,7 +136,7 @@ const groupNames = {
     ],
     'holostars_jp_uproar': [
         '夜十神封魔',
-        '羽継鳥有',
+        '羽継烏有',
         '緋崎ガンマ',
         '水無世燐央',
     ],
@@ -147,7 +147,7 @@ const groupNames = {
     ],
     'holostars_en_tempus': [
         'Altare',
-        'Axel',
+        'Syrios',
         'Bettel',
         'Flayon',
         'Hakka',
