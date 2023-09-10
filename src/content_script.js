@@ -140,8 +140,58 @@ async function apply_filter() {
     });
 }
 
-window.addEventListener('focus', (event) => {
-    apply_filter();
-});
+function addFavoriteMenuItem(isFavoriteSelected)
+{
+    const menu = document.querySelector('.drawer-menu');
+    const otherItemAnchors = Array.from(menu.querySelectorAll('.drawer-menu-item'));
+    const zentaiItemAnchor = otherItemAnchors[0];
 
-apply_filter();
+    otherItemAnchors.forEach(e => {
+        e.addEventListener('click', () => {
+            localStorage.setItem('is_favorite_selected', false);
+        });
+    });
+
+    if (isFavoriteSelected) {
+        zentaiItemAnchor.style.cssText = 'color:skyblue;';
+    }
+
+    const li = document.createElement('li');
+    li.innerHTML = '<a class="drawer-menu-item" href="/lives">お気に入り</a>';
+
+    const anchor = li.firstChild;
+
+    if (isFavoriteSelected) {
+        anchor.style.cssText = 'background-color: lightskyblue;color:#303030;text-decoration: none;';
+    } else {
+        anchor.style.cssText = 'color:skyblue;';
+    }
+
+    anchor.addEventListener('click', () => {
+        localStorage.setItem('is_favorite_selected', true);
+    });
+
+    menu.appendChild(li);
+}
+
+function main()
+{
+    let isFavoriteSelected = JSON.parse(localStorage.getItem('is_favorite_selected')) ?? false;
+
+    if (location.pathname !== '/lives') {
+        isFavoriteSelected = false;
+        localStorage.setItem('is_favorite_selected', false);
+    }
+
+    addFavoriteMenuItem(isFavoriteSelected);
+
+    if (isFavoriteSelected) {
+        window.addEventListener('focus', (event) => {
+            apply_filter();
+        });
+
+        apply_filter();
+    }
+}
+
+main();

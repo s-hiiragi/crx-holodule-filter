@@ -4,6 +4,7 @@
 
 <p align="center">
   <img src="doc/screenshot_popup.png" alt="ポップアップ画面イメージ" />
+  <img src="doc/screenshot_holodule-menu.png" alt="メニュー項目拡張イメージ" />
 </p>
 
 [^holodule]: ホロライブプロダクション所属VTuberの配信が分かるスケジュールサイト
@@ -28,7 +29,11 @@
 
 - ツールバーのパズルピースアイコンを押し`holodule filter`を選択する
 - 表示したいグループにチェックを入れる
-- [ホロジュール](https://schedule.hololive.tv/lives)を開くorリロードする
+- [ホロジュール](https://schedule.hololive.tv/lives)の`お気に入り`メニュー項目を選択する
+
+> note
+>
+> お気に入り選択時だけフィルターが適用されるように変更しました。(v2.2.0)
 
 ## ライセンス
 
