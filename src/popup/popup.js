@@ -7,7 +7,7 @@
     // フィルタ設定を反映
     checkboxes.forEach(e => {
         const name = e.dataset.name;
-        e.checked = filter[name] ?? true;
+        e.checked = filter[name] ?? false;
     });
 
     const gather_filter = () => {
