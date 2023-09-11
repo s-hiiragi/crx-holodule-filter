@@ -126,9 +126,13 @@ async function apply_filter() {
         console.debug('unknownFilters', unknownFilters);
     }
 
-    const hiddenNames = Object.keys(filter).
+    let hiddenNames = Object.keys(filter).
         filter(name => !filter[name]).
         flatMap(name => groupNames[name] ?? []);
+
+    if (hiddenNames.length === 0) {
+        hiddenNames = Object.values(groupNames).flat();
+    }
 
     console.debug('hiddenNames', hiddenNames);
 
