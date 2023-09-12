@@ -95,7 +95,7 @@ const groupNames = {
     'holostars_jp_gen1_aruran': ['アルランディス'],
     'holostars_jp_gen1_rikka': ['律可'],
     'holostars_jp_gen2': [],
-    'holostars_jp_gen2_astel': ['アステル'],
+    'holostars_jp_gen2_astel': ['アステル・レダ'],
     'holostars_jp_gen2_temma': ['岸堂天真'],
     'holostars_jp_gen2_roberu': ['夕刻ロベル'],
     'holostars_jp_gen3': [],
