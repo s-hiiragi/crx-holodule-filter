@@ -1,13 +1,16 @@
 {
     "manifest_version": 3,
     "name": "holodule filter",
-    "version": "2.2.4",
+    "version": "2.3.0",
 
     "action": {
         "default_popup": "popup/popup.html"
     },
     "description": "ホロジュールをタレント毎にフィルターできる拡張機能",
-    
+    "icons": {
+        "48": "icon/icon48.png"
+    },
+
     "background": {
         "service_worker": "service_worker.js"
     },
