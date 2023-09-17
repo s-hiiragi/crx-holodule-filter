@@ -45,7 +45,7 @@ const groupNames = {
     'hololive_jp_gen6_chloe': ['沙花叉クロヱ'],
     'hololive_jp_gen6_iroha': ['風真いろは'],
     'hololive_en': [],
-    'hololive_en_official': [],
+    'hololive_en_official': ['holo EN'],
     'hololive_en_myth': [],
     'hololive_en_myth_calli': ['Calli'],
     'hololive_en_myth_kiara': ['Kiara'],
