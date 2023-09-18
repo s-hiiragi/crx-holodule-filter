@@ -117,6 +117,21 @@ const groupNames = {
     'holostars_en_tempus_shinri': ['Shinri'],
 };
 
+const hololiveJpFilter = {};
+Object.keys(groupNames).forEach(name => {
+    hololiveJpFilter[name] = name.startsWith('hololive_jp_') || name.startsWith('hololive_dev_is_');
+});
+
+const hololiveFilter = {};
+Object.keys(groupNames).forEach(name => {
+    hololiveFilter[name] = name.startsWith('hololive_');
+});
+
+const holostarsFilter = {};
+Object.keys(groupNames).forEach(name => {
+    holostarsFilter[name] = name.startsWith('holostars_');
+});
+
 function logStreamCount()
 {
     const streams = Array.from(document.querySelectorAll('.row > div > .thumbnail'));
@@ -170,58 +185,84 @@ function applyFilter(filter)
     logStreamCount();
 }
 
-function addFavoriteMenuItem(isFavoriteSelected)
+function modifyPresetMenuItems()
 {
-    const menu = document.querySelector('.drawer-menu');
-    const otherItemAnchors = Array.from(menu.querySelectorAll('.drawer-menu-item'));
-    const zentaiItemAnchor = otherItemAnchors[0];
+    const menuItemAnchors = Array.from(document.querySelectorAll('.drawer-menu-item'));
 
-    otherItemAnchors.forEach(e => {
+    menuItemAnchors.forEach(e => {
         e.addEventListener('click', () => {
-            localStorage.setItem('is_favorite_selected', false);
+            localStorage.setItem('selected_menu_item', '');
         });
     });
+}
 
-    if (isFavoriteSelected) {
-        zentaiItemAnchor.style.cssText = 'color:skyblue;';
-    }
+function selectMenuItem(selectName)
+{
+    const menuItemAnchors = Array.from(document.querySelectorAll('.drawer-menu-item'));
 
+    menuItemAnchors.forEach(e => {
+        const name = e.textContent.trim();
+        if (name === selectName) {
+            e.style.cssText = 'background-color: lightskyblue;color:#303030;text-decoration: none;';
+        } else {
+            e.style.cssText = 'color:skyblue;';
+        }
+    });
+}
+
+function addMenuItem(options)
+{
     const li = document.createElement('li');
-    li.innerHTML = '<a class="drawer-menu-item" href="/lives">お気に入り</a>';
+    li.innerHTML = `<a class="drawer-menu-item" href="/lives">${options.name}</a>`;
 
     const anchor = li.firstChild;
-
-    if (isFavoriteSelected) {
-        anchor.style.cssText = 'background-color: lightskyblue;color:#303030;text-decoration: none;';
-    } else {
-        anchor.style.cssText = 'color:skyblue;';
-    }
-
+    anchor.style.cssText = 'color:skyblue;';
     anchor.addEventListener('click', () => {
-        localStorage.setItem('is_favorite_selected', true);
+        localStorage.setItem('selected_menu_item', options.name);
     });
 
+    const menu = document.querySelector('.drawer-menu');
     menu.appendChild(li);
 }
 
 async function main()
 {
-    let isFavoriteSelected = JSON.parse(localStorage.getItem('is_favorite_selected')) ?? false;
+    let selectedMenuItem = localStorage.getItem('selected_menu_item') ?? '';
 
     if (location.pathname !== '/lives') {
-        isFavoriteSelected = false;
-        localStorage.setItem('is_favorite_selected', false);
+        selectedMenuItem = '';
     }
 
-    addFavoriteMenuItem(isFavoriteSelected);
+    modifyPresetMenuItems();
+    addMenuItem({name: 'ホロライブ+DEV_IS'});
+    addMenuItem({name: 'ホロライブ全体'});
+    addMenuItem({name: 'ホロスターズ全体'});
+    addMenuItem({name: 'お気に入り'});
 
-    if (isFavoriteSelected) {
-        window.addEventListener('focus', (event) => {
+    if (selectedMenuItem !== '') {
+        selectMenuItem(selectedMenuItem);
+
+        switch (selectedMenuItem)
+        {
+        case 'ホロライブ+DEV_IS':
+            applyFilter(hololiveJpFilter);
+            break;
+        case 'ホロライブ全体':
+            applyFilter(hololiveFilter);
+            break;
+        case 'ホロスターズ全体':
+            applyFilter(holostarsFilter);
+            break;
+        case 'お気に入り':
+            window.addEventListener('focus', async (event) => {
+                applyFilter(await getFilter());
+            });
+
             applyFilter(await getFilter());
-        });
-
-        applyFilter(await getFilter());
-    } else {
+            break;
+        }
+    }
+    else {
         logStreamCount();
     }
 }
