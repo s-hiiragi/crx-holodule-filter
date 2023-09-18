@@ -119,12 +119,19 @@ const groupNames = {
 
 async function applyFilter()
 {
-    const filter = await chrome.runtime.sendMessage({'command': 'query_filter'});
-    console.debug('response', filter);
+    let filter = {};
+    try {
+        filter = await chrome.runtime.sendMessage({'command': 'query_filter'});
+        //console.debug('getFilter response', filter);
+    } catch (e) {
+        // "Extension context invalidated."エラーを無視する
+        // このエラーは拡張機能の更新後、ホロジュールのタブをアクティブにした場合に発生する
+        console.debug(e.message);
+    }
 
     const unknownFilters = Object.keys(filter).filter(name => !(name in groupNames));
-    if (unknownFilters) {
-        console.debug('unknownFilters', unknownFilters);
+    if (unknownFilters.length > 0) {
+        console.debug('getFilter unknownFilters', unknownFilters);
     }
 
     let hiddenNames = Object.keys(filter).
