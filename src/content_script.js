@@ -126,7 +126,7 @@ function logStreamCount()
     console.debug(`logStreamCount ${shownStreams.length}/${streams.length}`);
 }
 
-async function applyFilter()
+async function getFilter()
 {
     let filter = {};
     try {
@@ -143,15 +143,22 @@ async function applyFilter()
         console.debug('getFilter unknownFilters', unknownFilters);
     }
 
+    return filter;
+}
+
+function applyFilter(filter)
+{
+    //console.debug('applyFilter', filter);
+
     let hiddenNames = Object.keys(filter).
         filter(name => !filter[name]).
         flatMap(name => groupNames[name] ?? []);
 
-    if (hiddenNames.length === 0) {
-        hiddenNames = Object.values(groupNames).flat();
-    }
+    //console.debug('applyFilter hiddenNames', hiddenNames);
 
-    console.debug('applyFilter hiddenNames', hiddenNames);
+    if (hiddenNames.length === 0) {
+        return;
+    }
 
     const streams = Array.from(document.querySelectorAll('.row > div > .thumbnail'));
 
@@ -197,7 +204,7 @@ function addFavoriteMenuItem(isFavoriteSelected)
     menu.appendChild(li);
 }
 
-function main()
+async function main()
 {
     let isFavoriteSelected = JSON.parse(localStorage.getItem('is_favorite_selected')) ?? false;
 
@@ -210,15 +217,13 @@ function main()
 
     if (isFavoriteSelected) {
         window.addEventListener('focus', (event) => {
-            applyFilter();
+            applyFilter(await getFilter());
         });
 
-        applyFilter();
+        applyFilter(await getFilter());
     } else {
         logStreamCount();
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    main();
-});
+document.addEventListener('DOMContentLoaded', () => { main(); });
