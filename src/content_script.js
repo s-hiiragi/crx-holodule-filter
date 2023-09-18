@@ -117,6 +117,15 @@ const groupNames = {
     'holostars_en_tempus_shinri': ['Shinri'],
 };
 
+function logStreamCount()
+{
+    const streams = Array.from(document.querySelectorAll('.row > div > .thumbnail'));
+    const shownStreams = Array.from(document.querySelectorAll('.row > div > .thumbnail')).
+        filter(e => e.parentNode.style.display !== 'none');
+
+    console.debug(`logStreamCount ${shownStreams.length}/${streams.length}`);
+}
+
 async function applyFilter()
 {
     let filter = {};
@@ -142,7 +151,7 @@ async function applyFilter()
         hiddenNames = Object.values(groupNames).flat();
     }
 
-    console.debug('hiddenNames', hiddenNames);
+    console.debug('applyFilter hiddenNames', hiddenNames);
 
     const streams = Array.from(document.querySelectorAll('.row > div > .thumbnail'));
 
@@ -150,6 +159,8 @@ async function applyFilter()
         const name = e.querySelector('.name').textContent.trim();
         e.parentNode.style.display = hiddenNames.includes(name) ? 'none' : '';
     });
+
+    logStreamCount();
 }
 
 function addFavoriteMenuItem(isFavoriteSelected)
@@ -203,6 +214,8 @@ function main()
         });
 
         applyFilter();
+    } else {
+        logStreamCount();
     }
 }
 
