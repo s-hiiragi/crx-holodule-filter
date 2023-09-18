@@ -144,7 +144,7 @@ async function applyFilter()
 
     console.debug('hiddenNames', hiddenNames);
 
-    const streams = Array.from(document.querySelectorAll('#all > .container > .row > div > .row > div > .thumbnail'));
+    const streams = Array.from(document.querySelectorAll('.row > div > .thumbnail'));
 
     streams.forEach(e => {
         const name = e.querySelector('.name').textContent.trim();
