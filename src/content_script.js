@@ -117,7 +117,8 @@ const groupNames = {
     'holostars_en_tempus_shinri': ['Shinri'],
 };
 
-async function apply_filter() {
+async function applyFilter()
+{
     const filter = await chrome.runtime.sendMessage({'command': 'query_filter'});
     console.debug('response', filter);
 
@@ -191,10 +192,10 @@ function main()
 
     if (isFavoriteSelected) {
         window.addEventListener('focus', (event) => {
-            apply_filter();
+            applyFilter();
         });
 
-        apply_filter();
+        applyFilter();
     }
 }
 
