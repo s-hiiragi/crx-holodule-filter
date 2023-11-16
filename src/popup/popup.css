@@ -15,8 +15,29 @@ h1 {
     border-top: 1px solid lightgray;
 }
 
+.group > label {
+    background-color: #5EDEEC;
+}
+
+.subgroup > label {
+    background-color: #B0EBFC;
+}
+
 .subgroup, .talent {
     padding-left: 1em;
+}
+
+.subgroup {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+.talent {
+    padding-top: 0.25em;
+}
+
+.talent > label {
+    font-family: 'Noto Color Emoji', sans-serif;
 }
 
 label:has(input[type="checkbox"]) {
