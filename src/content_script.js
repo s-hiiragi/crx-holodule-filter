@@ -115,6 +115,11 @@ const groupNames = {
     'holostars_en_tempus_flayon': ['Flayon'],
     'holostars_en_tempus_hakka': ['Hakka'],
     'holostars_en_tempus_shinri': ['Shinri'],
+    'holostars_en_armis': [],
+    'holostars_en_armis_jurard': ['Jurard'],
+    'holostars_en_armis_goldbullet': ['Goldbullet'],
+    'holostars_en_armis_octavio': ['Octavio'],
+    'holostars_en_armis_crimzon': ['Crimzon'],
 };
 
 const hololiveJpFilter = {};
