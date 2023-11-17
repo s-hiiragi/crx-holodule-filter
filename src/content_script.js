@@ -370,13 +370,13 @@ async function main()
         switch (selectedMenuItem)
         {
         case 'ホロライブ+DEV_IS':
-            applyFilter(hololiveJpFilter);
+            applyFilter(hololiveJpFilter, await getSetting());
             break;
         case 'ホロライブ全体':
-            applyFilter(hololiveFilter);
+            applyFilter(hololiveFilter, await getSetting());
             break;
         case 'ホロスターズ全体':
-            applyFilter(holostarsFilter);
+            applyFilter(holostarsFilter, await getSetting());
             break;
         case 'お気に入り':
             window.addEventListener('focus', async (event) => {
