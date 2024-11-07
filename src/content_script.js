@@ -1,3 +1,4 @@
+// 注：各key同士でvalueが重複しないこと (いずれかのkeyの設定がfalseのときにタレントが非表示となってしまうため)
 const groupNames = {
     'hololive_jp': [],
     'hololive_jp_official': ['ホロライブ', 'Blue Journey'],
@@ -64,7 +65,6 @@ const groupNames = {
     'hololive_en_advent_bijou': ['Bijou'],
     'hololive_en_advent_nerissa': ['Nerissa'],
     'hololive_en_advent_fuwamoco': ['FUWAMOCO'],
-
     'hololive_en_justice': [],
     'hololive_en_justice_elizabeth': ['Elizabeth'],
     'hololive_en_justice_gigi': ['Gigi'],
@@ -85,14 +85,21 @@ const groupNames = {
     'hololive_id_gen3_zeta': ['Zeta'],
     'hololive_id_gen3_kaela': ['Kaela'],
     'hololive_id_gen3_kobo': ['Kobo'],
+
     'hololive_dev_is': [],
-    'hololive_dev_is_official': ['hololive DEV_IS'],
+    'hololive_dev_is_official': ['hololive DEV_IS', 'FLOW GLOW'],
     'hololive_dev_is_regloss': [],
     'hololive_dev_is_regloss_ao': ['火威青'],
     'hololive_dev_is_regloss_kanade': ['音乃瀬奏'],
     'hololive_dev_is_regloss_ririka': ['一条莉々華'],
     'hololive_dev_is_regloss_raden': ['儒烏風亭らでん'],
     'hololive_dev_is_regloss_hajime': ['轟はじめ'],
+    'hololive_dev_is_flowglow': [],
+    'hololive_dev_is_flowglow_riona': ['響咲リオナ'],
+    'hololive_dev_is_flowglow_niko': ['虎金妃笑虎'],
+    'hololive_dev_is_flowglow_su': ['水宮枢'],
+    'hololive_dev_is_flowglow_chihaya': ['輪堂千速'],
+    'hololive_dev_is_flowglow_vivi': ['綺々羅々ヴィヴィ'],
 
     'holostars_jp': [],
     'holostars_jp_official': ['ホロスターズ'],
@@ -185,6 +192,11 @@ const iconUrlByTalentName = {
     '一条莉々華': 'https://yt3.ggpht.com/TQwdYxMCQYmBQskSxmdAbfAqRR__ROlB-mFGlCFqLF4C-6vHpjYkWj9GbnlKOoOTaOMssRGw=s88-c-k-c0x00ffffff-no-rj',
     '儒烏風亭らでん': 'https://yt3.ggpht.com/MrOx47-A0RkLxHN5Wh8stc3SYfbPGNHdJY9AnjD5mRkuKYVeYjxlBSnzKHtqTjDQ3Lm_MRCjcA=s88-c-k-c0x00ffffff-no-rj',
     '轟はじめ': 'https://yt3.ggpht.com/vMM_SKbkipyDVJkUYPPWlQkgThE1rXMSh7hkhqvC_Qs-iTigfyKW23OfLH5U1HFTZIcsHR2Z=s88-c-k-c0x00ffffff-no-rj',
+    '響咲リオナ': 'https://yt3.ggpht.com/qufYdKqJ9VaUNhkP3_Wv0RranzAiwtvtOoxI_NRNMP6pCFa3lMnUKXRPd7EL4x-5OlDFp1BSpFE=s88-c-k-c0x00ffffff-no-rj',
+    '虎金妃笑虎': 'https://yt3.ggpht.com/CCOEFxhq858A_1QNu0VF9Y5vvXm9V4l7klSdL4FfMsOAAnVxoiAcxAlQO9RV0lCib6Fi_EkVrA=s88-c-k-c0x00ffffff-no-rj',
+    '水宮枢': 'https://yt3.ggpht.com/N30qJOGhVGBgUiGF9R63P-TGeMXUwhVwx8FZ-4cmilivjqM1qTyqyrTZS0LznCWIahSJT_ZeXw=s88-c-k-c0x00ffffff-no-rj',
+    '輪堂千速': 'https://yt3.ggpht.com/r_CG1_hNQIcnrbXOzIKbdq23Dt7lo_QGvdkVT_q1fzSOWPZxFyvlei5N4bJSeTUhwcn3JVmsh_I=s88-c-k-c0x00ffffff-no-rj',
+    '綺々羅々ヴィヴィ': 'https://yt3.ggpht.com/0NYd0NnC9mCjdu6t_i-JylPkwpz-o3IZ1eLqgG4MdXS-KUPrP36e71UysuoV9eZA1-TRG3gZ=s88-c-k-c0x00ffffff-no-rj',
     'Risu': 'https://yt3.ggpht.com/ytc/AIdro_lfOOnprUv5xcScxIgQBTa2ZGUfS3TdfMEerPzr6BXED94=s88-c-k-c0x00ffffff-no-rj',
     'Moona': 'https://yt3.ggpht.com/w8ilN5YMfG3H6SX162Fkg71BaJdYUUoHOc91cryyfdvto94IpypSjvsLaMA1MyODr2V-w-ox-h8=s88-c-k-c0x00ffffff-no-rj',
     'Iofi': 'https://yt3.ggpht.com/bF91weVtAIL7Uhnr2HVwtCTLVKK5kVsn4FC_Ze3Gl8rkSsEjDwyey3AbQ1PDfJQ1Oeac5cePeg=s88-c-k-c0x00ffffff-no-rj',
