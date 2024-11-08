@@ -87,7 +87,7 @@ const groupNames = {
     'hololive_id_gen3_kobo': ['Kobo'],
 
     'hololive_dev_is': [],
-    'hololive_dev_is_official': ['hololive DEV_IS', 'FLOW GLOW'],
+    'hololive_dev_is_official': ['ReGLOSS', 'FLOW GLOW'],
     'hololive_dev_is_regloss': [],
     'hololive_dev_is_regloss_ao': ['火威青'],
     'hololive_dev_is_regloss_kanade': ['音乃瀬奏'],
