@@ -401,11 +401,12 @@ async function main()
             applyFilter(holostarsFilter, await getSetting());
             break;
         case 'お気に入り':
+            applyFilter(await getFilter(), await getSetting());
+
+            // フィルターのチェック変更後すぐに反映する
             window.addEventListener('focus', async (event) => {
                 applyFilter(await getFilter(), await getSetting());
             });
-
-            applyFilter(await getFilter(), await getSetting());
             break;
         }
     }
