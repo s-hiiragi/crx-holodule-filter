@@ -376,7 +376,8 @@ async function main()
 {
     let selectedMenuItem = localStorage.getItem('selected_menu_item') ?? '';
 
-    if (location.pathname !== '/lives') {
+    // フィルター付きURL(/lives/ABC)が開かれた場合は最後に選択したフィルターよりもURLを優先する
+    if (location.pathname !== '/' && location.pathname !== '/lives') {
         selectedMenuItem = '';
     }
 
